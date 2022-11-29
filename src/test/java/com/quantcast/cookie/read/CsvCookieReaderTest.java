@@ -3,7 +3,7 @@ package com.quantcast.cookie.read;
 import com.quantcast.cookie.count.CookieCountImpl;
 import com.quantcast.cookie.exceptions.CookieFileReadingException;
 import com.quantcast.cookie.model.Cookie;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +28,7 @@ class CsvCookieReaderTest {
         String[] expectedCookiesArray = new String[]{"AtY0laUfhglK3lC7", "5UAVanZf6UtGyKVS", "SAZuXPGUrfbcn5UA", "4sMM2LxV07bPJzwf"};
         List<Cookie> currentCookiesList = cookieReadable.readCookiesFromFile(TEST_CSV_FILE_PATH);
         Object[] currentCookiesAsArray = currentCookiesList.stream().map(e -> e.getId()).collect(Collectors.toList()).toArray();
-        Assert.assertArrayEquals(expectedCookiesArray, currentCookiesAsArray);
+        Assertions.assertArrayEquals(expectedCookiesArray, currentCookiesAsArray);
     }
 
     @Test
@@ -37,7 +37,7 @@ class CsvCookieReaderTest {
         int expectedCookiesArraySize = 0;
         List<Cookie> currentCookiesList = cookieReadable.readCookiesFromFile(TEST_CSV_FILE_PATH);
         int currentCookiesAsArray = currentCookiesList.size();
-        Assert.assertEquals(expectedCookiesArraySize, currentCookiesAsArray);
+        Assertions.assertEquals(expectedCookiesArraySize, currentCookiesAsArray);
     }
 
     @Test

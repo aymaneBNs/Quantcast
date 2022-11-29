@@ -3,15 +3,13 @@ package com.quantcast.cookie.count;
 import com.quantcast.cookie.exceptions.CookieFileReadingException;
 import com.quantcast.cookie.helper.DateHelper;
 import com.quantcast.cookie.model.Cookie;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -41,8 +39,8 @@ class CookieCountImplTest {
         List<String> ExpectedMostUsedCookie = new ArrayList<>();
         ExpectedMostUsedCookie.add("XXXXXXX");
         List<String> actualMostUsedCookie = cookieCount.computeMostUsedCookiesForDay(cookiesUsagePerDayTestMap);
-        Assert.assertEquals(actualMostUsedCookie.size(), 1);
-        Assert.assertEquals(actualMostUsedCookie, ExpectedMostUsedCookie);
+        Assertions.assertEquals(actualMostUsedCookie.size(), 1);
+        Assertions.assertEquals(actualMostUsedCookie, ExpectedMostUsedCookie);
     }
 
 
@@ -55,8 +53,8 @@ class CookieCountImplTest {
         ExpectedMostUsedCookie.add("XXXXXXX");
         ExpectedMostUsedCookie.add("ZZZZZZZ");
         List<String> actualMostUsedCookie = cookieCount.computeMostUsedCookiesForDay(cookiesUsagePerDayTestMap);
-        Assert.assertEquals(actualMostUsedCookie.size(), 2);
-        Assert.assertEquals(actualMostUsedCookie, ExpectedMostUsedCookie);
+        Assertions.assertEquals(actualMostUsedCookie.size(), 2);
+        Assertions.assertEquals(actualMostUsedCookie, ExpectedMostUsedCookie);
 
     }
 
