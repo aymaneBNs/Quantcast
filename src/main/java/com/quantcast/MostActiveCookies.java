@@ -20,7 +20,6 @@ import java.util.Scanner;
 public class MostActiveCookies implements ICommandLineReader {
     private static final Logger LOGGER = LogManager.getLogger(MostActiveCookies.class);
 
-
     public static void main(String[] args) throws ConsoleReadingException, CookieFileReadingException {
         ICommandLineReader consoleReader = new MostActiveCookies();
         String[] commandLineParams = consoleReader.readFileNameAndDate();
@@ -31,7 +30,6 @@ public class MostActiveCookies implements ICommandLineReader {
         cookieComputable.computeMostUsedCookiesForDay(cookiesUsagePerDay).forEach(System.out::println);
     }
 
-
     @Override
     public String[] readFileNameAndDate() throws ConsoleReadingException {
         String fileName = "";
@@ -40,21 +38,21 @@ public class MostActiveCookies implements ICommandLineReader {
             Scanner scanner = new Scanner(System.in);
             String ConsoleCommand = scanner.nextLine();
             for (int i = 0; i < ConsoleCommand.length(); ++i) {
-                if (ConsoleCommand.charAt(i) == 'f' && ConsoleCommand.charAt(i - 1) == '-') {  // Read FileName
-                    int f = i + 2;
-                    while (f < ConsoleCommand.length() && ConsoleCommand.charAt(f) != ' ') {
-                        fileName += ConsoleCommand.charAt(f);
-                        ++f;
+                if (ConsoleCommand.charAt(i) == 'f' && ConsoleCommand.charAt(i - 1) == '-') {
+                    int fileNameIndex = i + 2;
+                    while (fileNameIndex < ConsoleCommand.length() && ConsoleCommand.charAt(fileNameIndex) != ' ') {
+                        fileName += ConsoleCommand.charAt(fileNameIndex);
+                        ++fileNameIndex;
                     }
-                    i = f;
+                    i = fileNameIndex;
                 }
-                if (ConsoleCommand.charAt(i) == 'd' && ConsoleCommand.charAt(i - 1) == '-') { // Read Date
-                    int d = i + 2;
-                    while (d < ConsoleCommand.length() && ConsoleCommand.charAt(d) != ' ') {
-                        date += ConsoleCommand.charAt(d);
-                        ++d;
+                if (ConsoleCommand.charAt(i) == 'd' && ConsoleCommand.charAt(i - 1) == '-') {
+                    int dateIndex = i + 2;
+                    while (dateIndex < ConsoleCommand.length() && ConsoleCommand.charAt(dateIndex) != ' ') {
+                        date += ConsoleCommand.charAt(dateIndex);
+                        ++dateIndex;
                     }
-                    i = d;
+                    i = dateIndex;
                 }
             }
             if (date.isEmpty() || fileName.isEmpty()) {
@@ -68,9 +66,6 @@ public class MostActiveCookies implements ICommandLineReader {
             LOGGER.error(e.getMessage());
             throw new ConsoleReadingException();
         }
-
         return new String[]{fileName, date};
-
     }
-
 }

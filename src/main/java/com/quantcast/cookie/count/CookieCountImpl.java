@@ -42,11 +42,9 @@ public class CookieCountImpl implements ICookieComputable {
             LOGGER.warn("Not Able to compute Most Used Cookies For The Day . Cookies Map Is Empty");
             return new ArrayList<>();
         }
-
         cookiesUsageMap.entrySet()
                 .stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEachOrdered(x -> sortedCookiesWithUsageMap.put(x.getKey(), x.getValue()));
-
         LOGGER.info("Sorted Cookies per Usage for The requested Day  : {} ", sortedCookiesWithUsageMap);
 
         String mostActiveCookieId = null;
